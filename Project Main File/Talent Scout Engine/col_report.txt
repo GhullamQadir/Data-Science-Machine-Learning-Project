@@ -1,0 +1,10 @@
+Testing sheet: T20_WC_2024_BAT
+Columns: ['Player', 'Country', 'Mat', 'Inn', 'NO', 'Runs', 'HS', 'Avg', 'BF', 'SR', '100', '50', '0', '4s', '6s']
+Shape: (966, 15)
+First 5 players:
+           Player Country Runs    Avg      SR
+0   DarylMitchell     NZL   95  31.66  113.09
+1   DarylMitchell     NZL   95  31.66  113.09
+2   DarylMitchell     NZL   95  31.66  113.09
+3   DarylMitchell     NZL   95  31.66  113.09
+4  PathumNissanka      SL   91  22.75  124.65

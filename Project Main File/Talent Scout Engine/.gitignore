@@ -1,0 +1,14 @@
+# Virtual Environment
+venv/
+env/
+
+# Python Cache files
+__pycache__/
+*.pyc
+
+# OS generated files
+.DS_Store
+
+# Models and Processed Data (Optional: Agar tum GitHub par heavy data nahi daalna chahte)
+models/*.pkl
+data/processed/*.csv
