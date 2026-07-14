@@ -461,18 +461,21 @@ def _merge_cricket_sheets(file, xl, bat_sheets, bowl_sheets):
         runs = row.get('Total_Runs', 0)
         wkts = row.get('Total_Wickets', 0)
         
-        # Elite in both: All-Rounder
-        if runs >= 150 and wkts >= 8:
+        # Calculate relative impact (1 wicket ~ 25 runs)
+        bat_score = runs
+        bowl_score = wkts * 25
+        
+        # Elite in both with relatively balanced impact
+        if bat_score > 300 and bowl_score > 300 and abs(bat_score - bowl_score) < max(bat_score, bowl_score) * 0.6:
             return 'All-Rounder'
-        # Primary bowler: has wickets, or very few runs but some wickets
-        elif wkts >= 5 or (wkts > 0 and runs < 100):
-            return 'Bowler'
-        # Primary batsman: has runs, very few wickets
-        elif runs >= 100 or (runs > 0 and wkts < 2):
+            
+        # Significant difference in impact dictates primary role
+        if bat_score > bowl_score * 1.5:
             return 'Batsman'
-        # Fallback for players with very low stats
+        elif bowl_score > bat_score * 1.5:
+            return 'Bowler'
         else:
-            return 'Bowler' if (wkts * 20 > runs) else 'Batsman'
+            return 'All-Rounder'
             
     merged['Role'] = merged.apply(assign_role, axis=1)
 
