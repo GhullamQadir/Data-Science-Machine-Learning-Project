@@ -26,7 +26,7 @@ if dark_mode:
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
         /* ===== GLOBAL FONT & COLOR ===== */
-        html, body, [class*="css"], * {
+        html, body {
             font-family: 'Outfit', sans-serif !important;
         }
 
@@ -55,7 +55,7 @@ if dark_mode:
             background-color: #141414 !important;
             border-right: 1px solid #2E2E2E !important;
         }
-        section[data-testid="stSidebar"] * {
+        section[data-testid="stSidebar"] {
             color: #FFFFFF !important;
         }
         section[data-testid="stSidebar"] input,
@@ -77,8 +77,7 @@ if dark_mode:
 
         /* ===== ALL TEXT ELEMENTS ===== */
         h1, h2, h3, h4, h5, h6,
-        p, span, label, div, li, td, th,
-        div[data-testid="stMarkdownContainer"] * {
+        p, label, li, td, th {
             color: #FFFFFF !important;
         }
 
@@ -178,7 +177,7 @@ else:
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
         /* ===== GLOBAL FONT ===== */
-        html, body, [class*="css"], * {
+        html, body {
             font-family: 'Outfit', sans-serif !important;
         }
 
@@ -461,10 +460,20 @@ def _merge_cricket_sheets(file, xl, bat_sheets, bowl_sheets):
     def assign_role(row):
         runs = row.get('Total_Runs', 0)
         wkts = row.get('Total_Wickets', 0)
-        if runs > 200 and wkts > 10: return 'All-Rounder'
-        elif runs > 200:             return 'Batsman'
-        elif wkts > 10:              return 'Bowler'
-        else:                        return 'All-Rounder'
+        
+        # Elite in both: All-Rounder
+        if runs >= 150 and wkts >= 8:
+            return 'All-Rounder'
+        # Primary bowler: has wickets, or very few runs but some wickets
+        elif wkts >= 5 or (wkts > 0 and runs < 100):
+            return 'Bowler'
+        # Primary batsman: has runs, very few wickets
+        elif runs >= 100 or (runs > 0 and wkts < 2):
+            return 'Batsman'
+        # Fallback for players with very low stats
+        else:
+            return 'Bowler' if (wkts * 20 > runs) else 'Batsman'
+            
     merged['Role'] = merged.apply(assign_role, axis=1)
 
     # Add form index (simulate based on batting avg percentile since real form not in dataset)
@@ -526,7 +535,8 @@ st.sidebar.markdown("---")
 st.sidebar.header("🔍 Filter Players")
 
 countries = st.sidebar.multiselect("Select Country Pool", options=sorted(df['Country'].unique()), default=sorted(df['Country'].unique()))
-roles = st.sidebar.multiselect("Select Player Role", options=sorted(df['Role'].unique()), default=sorted(df['Role'].unique()))
+roles_list = sorted(list(set(['Batsman', 'Bowler', 'All-Rounder'] + list(df['Role'].unique()))))
+roles = st.sidebar.multiselect("Select Player Role", options=roles_list, default=roles_list)
 tiers = st.sidebar.multiselect("Select Model Ranked Tiers", options=sorted(df['Performance_Tier'].unique()), default=sorted(df['Performance_Tier'].unique()))
 
 # Checkbox logic for analytical classification isolating young stars
