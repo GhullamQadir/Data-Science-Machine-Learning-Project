@@ -27,7 +27,7 @@ if dark_mode:
 
         /* ===== GLOBAL FONT & COLOR ===== */
         html, body {
-            font-family: 'Outfit', sans-serif !important;
+            font-family: 'Outfit', sans-serif;
         }
 
         /* ===== MAIN APP BACKGROUND ===== */
@@ -178,7 +178,7 @@ else:
 
         /* ===== GLOBAL FONT ===== */
         html, body {
-            font-family: 'Outfit', sans-serif !important;
+            font-family: 'Outfit', sans-serif;
         }
 
         /* ===== MAIN APP BACKGROUND ===== */
@@ -422,7 +422,7 @@ def _merge_cricket_sheets(file, xl, bat_sheets, bowl_sheets):
             Batting_Avg  = ('Batting_Avg', 'mean'),
             Strike_Rate  = ('Strike_Rate', 'mean'),
             Total_Matches= ('Matches',     'sum') if 'Matches' in bat_all.columns else ('Player_Name', 'count'),
-            Age_Group    = ('Age_Group',   lambda x: x.mode().iloc[0] if 'Age_Group' in bat_all.columns and len(x) > 0 else 'Senior'),
+            Age_Group    = ('Age_Group',   lambda x: 'U19' if 'U19' in x.values else ('U23' if 'U23' in x.values else 'Senior')),
         )
     else:
         bat_agg = pd.DataFrame()
@@ -463,16 +463,16 @@ def _merge_cricket_sheets(file, xl, bat_sheets, bowl_sheets):
         
         # Calculate relative impact (1 wicket ~ 25 runs)
         bat_score = runs
-        bowl_score = wkts * 25
+        bowl_score = wkts * 150
         
         # Elite in both with relatively balanced impact
         if bat_score > 300 and bowl_score > 300 and abs(bat_score - bowl_score) < max(bat_score, bowl_score) * 0.6:
             return 'All-Rounder'
             
         # Significant difference in impact dictates primary role
-        if bat_score > bowl_score * 1.5:
+        if bat_score > bowl_score * 1.2:
             return 'Batsman'
-        elif bowl_score > bat_score * 1.5:
+        elif bowl_score > bat_score * 1.2:
             return 'Bowler'
         else:
             return 'All-Rounder'
