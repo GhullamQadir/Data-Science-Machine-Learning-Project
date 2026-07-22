@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import ast; ast.parse\\(open\\('retrain_model.py'\\).read\\(\\)\\); print\\('retrain_model.py: syntax OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('inject_ages.py'\\).read\\(\\)\\); print\\('inject_ages.py: syntax OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('fix_excel.py'\\).read\\(\\)\\); print\\('fix_excel.py: syntax OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('fix_u19.py'\\).read\\(\\)\\); print\\('fix_u19.py: syntax OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('generate_sample_data.py'\\).read\\(\\)\\); print\\('generate_sample_data.py: syntax OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('app.py'\\).read\\(\\)\\); print\\('app.py: syntax OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('src/data_pipeline.py'\\).read\\(\\)\\); print\\('data_pipeline.py: syntax OK'\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(venv/Scripts/streamlit.exe run *)",
+      "Bash(venv/Scripts/python.exe -m pip list)",
+      "Bash(venv/Scripts/python.exe -m pip install -r requirements.txt)"
+    ]
+  }
+}
