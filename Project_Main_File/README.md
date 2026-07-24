@@ -2,10 +2,13 @@
 
 **Advanced Data Science and Machine Learning Framework for Next-Generation Cricket Scouting**
 
+Live Application Deployment: [https://data-science-machine-learning-project.streamlit.app/](https://data-science-machine-learning-project.streamlit.app/)
+
 ---
 
 ## Table of Contents
 
+- [Live Demo](#live-demo)
 - [Project Overview](#project-overview)
 - [Motivation and Problem Statement](#motivation-and-problem-statement)
 - [Architecture](#architecture)
@@ -21,6 +24,16 @@
 - [Configuration](#configuration)
 - [Academic Context](#academic-context)
 - [Authors](#authors)
+
+---
+
+## Live Demo
+
+The Talent Scout Engine interactive application is deployed and live on Streamlit Cloud:
+
+**Live Dashboard URL:** [https://data-science-machine-learning-project.streamlit.app/](https://data-science-machine-learning-project.streamlit.app/)
+
+Users can access the live application to filter players, visualize performance clusters, and run real-time ML scouting inference without any local setup.
 
 ---
 
