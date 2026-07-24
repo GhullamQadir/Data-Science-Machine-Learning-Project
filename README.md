@@ -39,9 +39,9 @@ Users can access the live application to filter players, visualize performance c
 
 ## Project Overview
 
-Talent Scout Engine is a data-driven scouting platform built as a 4th-semester academic capstone project in Data Science and Machine Learning. The system ingests raw cricket performance data from ICC international tournaments and T20 franchise leagues (2024–2026 cycles), applies a structured feature engineering pipeline, and trains an unsupervised K-Means clustering model to segment players into objectively ranked performance tiers.
+Talent Scout Engine is a Data driven scouting platform built as a 4th Semester academic project in Data Science and Machine Learning. The system ingests raw cricket performance data from ICC international tournaments and T20 franchise leagues (2024–2026 cycles), applies a structured feature engineering pipeline, and trains an unsupervised K-Means clustering model to segment players into objectively ranked performance tiers.
 
-The output is an interactive Streamlit web dashboard that allows scouts, analysts, and coaches to filter, compare, and evaluate player profiles across multiple dimensions — batting, bowling, fielding, and recent form — with a particular emphasis on identifying emerging Under-19 and Under-23 talent.
+The output is an interactive Streamlit web dashboard that allows scouts, analysts, and coaches to filter, compare, and evaluate player profiles across multiple dimensions batting, bowling, fielding, and recent form with a particular emphasis on identifying emerging Under-19 and Under-23 talent.
 
 ---
 
@@ -53,7 +53,7 @@ Traditional cricket scouting relies heavily on manual observation and subjective
 - Prone to selection bias and regional blind spots
 - Unable to synthesize multi-dimensional performance indicators into a unified ranking
 
-This project addresses these limitations by applying unsupervised machine learning to derive objective, data-backed performance tiers. The composite Scout Rating quantifies a player's overall value across batting, bowling, fielding, and form — eliminating reliance on gut-feel assessments.
+This project addresses these limitations by applying unsupervised machine learning to derive objective, data-backed performance tiers. The composite Scout Rating quantifies a player's overall value across batting, bowling, fielding, and formm eliminating reliance on gut-feel assessments.
 
 ---
 
@@ -81,7 +81,7 @@ Raw Excel / CSV Data
   (app.py)
 ```
 
-**Ingestion Layer:** Handles multi-sheet Excel workbooks with stacked batting, bowling, and fielding sections. Auto-detects header rows, de-duplicates columns, resolves naming variations across tournaments, and merges data by player name.
+**Ingestion Layer:** Handles multi sheet Excel workbooks with stacked batting, bowling, and fielding sections. Auto detects header rows, De duplicates columns, resolves naming variations across tournaments, and merges data by player name.
 
 **Feature Engineering:** Constructs domain-specific impact scores from raw statistics.
 
@@ -375,11 +375,11 @@ This script:
 
 ## Academic Context
 
-**Degree Program:** Bachelor of Science in Computer Science (BSCS)  
+**Degree Program:** Bachelor of Science in Artificial Intelligence (BSAI)  
 **Semester:** 4th Semester  
 **Courses:** Introduction to Data Science / Machine Learning  
-**Project Type:** Capstone Group Project  
-**Academic Year:** 2025–2026
+**Project Type:** Sports Related Project  
+**Academic Year:** 2026
 
 This project demonstrates applied knowledge of:
 - Data wrangling and preprocessing with pandas
